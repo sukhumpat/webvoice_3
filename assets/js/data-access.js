@@ -12,14 +12,23 @@ window.DataAccess = (function () {
     // ลองดึงจาก Supabase ก่อน
     if (window.SB && SB.isConfigured && SB.client) {
       try {
-        const { data, error } = await SB.client
-          .from('words')
-          .select('exercise_code,word,reading,letter,letter_name,age_level,emoji,order_index,id')
-          .order('age_level', { ascending: true })
-          .order('exercise_code', { ascending: true })
-          .order('order_index', { ascending: true });
-        if (!error && data && data.length) {
-          _cache = data;
+        // Supabase/PostgREST คืนสูงสุด 1000 แถว/ครั้ง — ต้องดึงแบบแบ่งหน้าจนครบ
+        const PAGE = 1000;
+        let all = [];
+        for (let from = 0; ; from += PAGE) {
+          const { data, error } = await SB.client
+            .from('words')
+            .select('exercise_code,word,reading,letter,letter_name,age_level,emoji,order_index,id')
+            .order('age_level', { ascending: true })
+            .order('exercise_code', { ascending: true })
+            .order('order_index', { ascending: true })
+            .range(from, from + PAGE - 1);
+          if (error) throw error;
+          if (data && data.length) all = all.concat(data);
+          if (!data || data.length < PAGE) break;   // หน้าสุดท้าย
+        }
+        if (all.length) {
+          _cache = all;
           return _cache;
         }
       } catch (e) {
