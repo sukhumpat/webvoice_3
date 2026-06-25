@@ -89,12 +89,13 @@
       const name = (user.email || 'ผู้ใช้').split('@')[0];
       const roleLabel = role === 'specialist' ? 'ผู้เชี่ยวชาญ' : 'ผู้ฝึกออกเสียง';
       el.innerHTML =
-        '<a href="management.html" class="btn btn-light btn-sm fw-semibold rounded-pill px-3">' +
-        '<span aria-hidden="true">📊</span> จัดการ</a>' +
         '<span class="navbar-user d-none d-lg-inline">' +
         '<span class="user-name">' + name + '</span>' +
         '<span class="badge rounded-pill role-badge ms-1">' + roleLabel + '</span></span>' +
-        '<button id="logout-btn" class="btn btn-outline-light btn-sm rounded-pill px-3">ออกจากระบบ</button>';
+        '<a href="management.html" class="btn btn-brand btn-sm fw-semibold rounded-pill px-3">' +
+        '<span aria-hidden="true">📊</span> จัดการ</a>' +
+        '<button id="logout-btn" class="btn btn-outline-danger btn-sm fw-semibold rounded-pill px-3">' +
+        '<span aria-hidden="true">🚪</span> ออกจากระบบ</button>';
       const lo = document.getElementById('logout-btn');
       if (lo)
         lo.addEventListener('click', async function () {
