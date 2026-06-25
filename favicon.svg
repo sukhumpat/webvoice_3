@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ไอคอนการพูด">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a3d"/>
+      <stop offset="1" stop-color="#ff5e7e"/>
+    </linearGradient>
+  </defs>
+  <!-- speech bubble -->
+  <path fill="url(#g)" d="M14 8h26a10 10 0 0 1 10 10v14a10 10 0 0 1-10 10H26l-10 9V42h-2A10 10 0 0 1 4 32V18A10 10 0 0 1 14 8Z"/>
+  <!-- smiling mouth -->
+  <path fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" d="M18 23a9 9 0 0 0 16 0"/>
+  <circle cx="19" cy="17" r="2.4" fill="#fff"/>
+  <circle cx="33" cy="17" r="2.4" fill="#fff"/>
+  <!-- sound waves -->
+  <g fill="none" stroke="#36c2a6" stroke-width="3.5" stroke-linecap="round">
+    <path d="M50 18a9 9 0 0 1 0 14"/>
+    <path d="M55 13a16 16 0 0 1 0 24"/>
+  </g>
+</svg>
